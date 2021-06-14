@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -53,7 +52,7 @@ func newGlusterfsDriver(root string, defaultServers string, defaultVolname strin
 		defaultServers: defaultServers,
 	}
 
-	data, err := ioutil.ReadFile(d.statePath)
+	data, err := os.ReadFile(d.statePath)
 	if err != nil {
 		if os.IsNotExist(err) {
 			logrus.WithField("statePath", d.statePath).Debug("no state found")
@@ -76,7 +75,7 @@ func (d *glusterfsDriver) saveState() {
 		return
 	}
 
-	if err := ioutil.WriteFile(d.statePath, data, 0644); err != nil {
+	if err := os.WriteFile(d.statePath, data, 0644); err != nil {
 		logrus.WithField("savestate", d.statePath).Error(err)
 	}
 }
