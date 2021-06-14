@@ -15,5 +15,4 @@ RUN apt-get update \
   && apt-get autoremove -y \
   && rm -rf /var/lib/apt/lists/*
 COPY --from=builder /go/bin/docker-volume-glusterfs .
-CMD ["docker-volume-glusterfs"]
-
+CMD ["./docker-volume-glusterfs"]
