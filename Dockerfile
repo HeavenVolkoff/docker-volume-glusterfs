@@ -1,3 +1,5 @@
+ARG DEBIAN_VERSION=bookworm-slim
+
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
 
 #--
@@ -26,7 +28,7 @@ RUN xx-go build -tags 'netgo osusergo' -ldflags '-extldflags "-static"' -o /bin/
 
 #--
 
-FROM debian:bookworm-slim
+FROM debian:${DEBIAN_VERSION}
 
 # --- Environment Variables ---
 # Don't allow APT to make question
