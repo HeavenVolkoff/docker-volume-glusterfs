@@ -18,11 +18,11 @@ __plugin="${__dir}/plugin/${_arch}"
 
 # Build roots
 docker buildx \
-    --tag "docker-volume-glusterfs:${_arch}_${_version}" \
-    --load \
-    --platform "linux/${_arch}" \
-    --build-arg "DEBIAN_VERSION=${_debian}" \
-    "$__dir"
+  --tag "docker-volume-glusterfs:${_arch}_${_version}" \
+  --load \
+  --platform "linux/${_arch}" \
+  --build-arg "DEBIAN_VERSION=${_debian}" \
+  "$__dir"
 
 # Export plugin rootfs
 mkdir -p "${__plugin}/rootfs"
@@ -39,4 +39,3 @@ docker plugin enable "glusterfs" "${__plugin}"
 docker rm -vf tmp
 docker image rm -f "docker-volume-glusterfs:${_arch}_${_version}"
 rm -rf "${__plugin}"
-

@@ -47,8 +47,8 @@ COPY --from=plugin-builder /bin/docker-volume-glusterfs /bin/
 CMD ["/bin/docker-volume-glusterfs"]
 
 LABEL org.opencontainers.image.title="docker-volume-glusterfs" \
-      org.opencontainers.image.authors="Vítor Vasconcellos <support@vasconcellos.casa>" \
-      org.opencontainers.image.version="1.2.0" \
-      org.opencontainers.image.revision="7" \
-      org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.description="This is a managed Docker volume plugin to allow Docker containers to access GlusterFS volumes"
+    org.opencontainers.image.authors="Vítor Vasconcellos <support@vasconcellos.casa>" \
+    org.opencontainers.image.version="1.2.0" \
+    org.opencontainers.image.revision="7" \
+    org.opencontainers.image.licenses="MIT" \
+    org.opencontainers.image.description="This is a managed Docker volume plugin to allow Docker containers to access GlusterFS volumes"
