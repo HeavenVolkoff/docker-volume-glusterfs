@@ -39,8 +39,7 @@ ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn
 # Add APT config file
 ADD "https://gist.githubusercontent.com/HeavenVolkoff/ff7b77b9087f956b8df944772e93c071/raw" /etc/apt/apt.conf.d/99custom
 
-# No need to reset cache after: https://github.com/rocker-org/rocker/issues/35#issuecomment-58944297
-RUN apt update -qq && apt install glusterfs-client
+RUN apt update -qq && apt install glusterfs-client && rm -rf /var/lib/apt/lists/*
 
 COPY --from=plugin-builder /bin/docker-volume-glusterfs /bin/
 
@@ -49,6 +48,6 @@ CMD ["/bin/docker-volume-glusterfs"]
 LABEL org.opencontainers.image.title="docker-volume-glusterfs" \
     org.opencontainers.image.authors="Vítor Vasconcellos <support@vasconcellos.casa>" \
     org.opencontainers.image.version="1.2.0" \
-    org.opencontainers.image.revision="7" \
+    org.opencontainers.image.revision="8" \
     org.opencontainers.image.licenses="MIT" \
     org.opencontainers.image.description="This is a managed Docker volume plugin to allow Docker containers to access GlusterFS volumes"

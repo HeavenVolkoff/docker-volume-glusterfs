@@ -11,13 +11,13 @@ _arch=arm64 # amd64 | arm-v6 | arm-v7 | s390x | ppc64le | ...
 _debian=bookworm-slim
 
 # Plugin version, Check Dockerfile labels to see what is the current version
-_version=1.2.0-7
+_version=1.2.0-8
 
 __dir=$(CDPATH="" cd -- "$(dirname -- "$0")" && pwd)
 __plugin="${__dir}/plugin/${_arch}"
 
 # Build roots
-docker buildx \
+docker buildx build \
   --tag "docker-volume-glusterfs:${_arch}_${_version}" \
   --load \
   --platform "linux/${_arch}" \
